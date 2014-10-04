@@ -1,0 +1,11 @@
+{
+  "name": "Krafthack-mot-kreft",
+  "version": "0.0.1",
+  "description": "Webapp-base for en Krafthack mot kreft!",
+  "dependencies": {
+    "express": "^4.9.5"
+  },
+  "scripts": {
+    "server": "node server"
+  }
+}
