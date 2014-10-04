@@ -1,7 +1,19 @@
 .c-nav {
   position: fixed;
-  top: 0;
+  top: @header-height;
   left: -@nav-width;
   height: 100%;
   width: @nav-width;
+  background-color: @color-primary--weaker;
+}
+
+.c-nav a {
+  display: block;
+  color: @color-font-primary--stronger;
+  transition: @transition-bg;
+}
+
+.c-nav hover {
+  color: red;
+  background-color: @color-primary;
 }

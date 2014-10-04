@@ -7,10 +7,10 @@ module.exports = function (outsideCanvas, onCanvas) {
       this.on = new onCanvas.controller();
     },
     view: function (ctrl) {
-      return [
+      return m(".u-wrap", [
         outsideCanvas.view(ctrl.off),
         m(".u-canvas.u-slideIn", onCanvas.view(ctrl.on))
-      ];
+      ]);
     }
   };
 }

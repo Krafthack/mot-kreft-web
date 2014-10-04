@@ -19,7 +19,7 @@ module.exports = {
 };
 
 var navItem = _.curry(function (active, item) {
-  return m("a", {
+  return m("a.typo-nav", {
       onclick: active.bind(null, false),
       href: item.url(),
       config: m.route

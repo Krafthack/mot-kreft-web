@@ -1,2 +1,9 @@
-@color-font-primary: rgb(250, 222, 222);
+@diff: 20%;
+
 @color-primary: rgb(69, 69, 69);
+@color-primary--weaker: lighten(@color-primary, @diff);
+
+@color-secondary: rgb(169, 169, 169);
+
+@color-font-primary: rgb(250, 222, 222);
+@color-font-primary--stronger: darken(@color-font-primary, @diff);

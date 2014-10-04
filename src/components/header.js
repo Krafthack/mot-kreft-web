@@ -13,7 +13,7 @@ module.exports = {
     return m("header.c-header", [
       m("button", {
         onclick: ctrl.toggleActive
-      }, "Toggle Nav")
+      }, m("i.fa.fa-bars"))
     ]);
   }
 };

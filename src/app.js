@@ -5,5 +5,5 @@ var mixinLayout = require('./lib/mithril/mixin-layout');
 var canvas = require('./lib/mithril/off-canvas-nav');
 
 m.route(document.getElementById("main-region"), "/", {
-  "/": canvas(nav, mixinLayout(header)) 
+  "/": canvas(mixinLayout(nav, header), mixinLayout()) 
 });
