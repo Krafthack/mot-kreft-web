@@ -1,1 +1,2 @@
 require('./js');
+require('./less');

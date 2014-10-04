@@ -10,6 +10,8 @@ module.exports = {
     path: {
         "scripts": join(base, "app.js"),
         "scriptsWatch": join(base, "**/*.js"),
+        "less": join(base, "style/style.less"),
+        "lessWatch": join(base, "style/**/*.less")
     },
 
     join: join,
