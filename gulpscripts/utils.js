@@ -6,7 +6,7 @@ var fs = require('fs');
 
 module.exports = {
     base: base,
-    output: './public/',
+    output: './public/build/',
     path: {
         "scripts": join(base, "app.js"),
         "scriptsWatch": join(base, "**/*.js"),
