@@ -1,4 +1,5 @@
 var m = require('mithril');
+var config = require('../config');
 
 var User = function (data) {
 
@@ -7,7 +8,7 @@ var User = function (data) {
 User.get = function () {
   return m.request({
     method: "GET",
-    url: "http://krafthack-kreft-api.herokuapp.com"
+    url: config.krafthack-kreft-api
   });
 };
 
