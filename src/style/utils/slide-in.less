@@ -1,0 +1,20 @@
+@slide-duration: 300ms;
+@slide-style: ease all;
+
+.u-slideIn {
+  transform: translateX(0);
+
+  transform: translate3d(0, 0, 0);
+
+  transition: @slide-duration @slide-style;
+
+  backface-visibility: hidden;
+}
+
+.u-slideIn {
+  &.is-active,
+  &.is-active + .u-canvas {
+    transform: translateX(@nav-width);
+    transform: translate3d(@nav-width, 0, 0);
+  }
+}

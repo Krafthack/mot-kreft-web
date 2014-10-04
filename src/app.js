@@ -1,16 +1,9 @@
 var m = require('mithril');
-var User = require('./models/User');
+var nav = require('./components/nav');
+var header = require('./components/header');
+var mixinLayout = require('./lib/mithril/mixin-layout');
+var canvas = require('./lib/mithril/off-canvas-nav');
 
 m.route(document.getElementById("main-region"), "/", {
-  "/": {
-    controller: function () {
-      this.hc = m.prop("");
-      User.get().then(function (res) {
-        this.hc(res.success);
-      }.bind(this));
-    },
-    view: function (ctrl) {
-      return m("", "Halla "+ ctrl.hc());
-    }
-  }
+  "/": canvas(nav, mixinLayout(header)) 
 });
