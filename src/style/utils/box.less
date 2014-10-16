@@ -1,0 +1,21 @@
+
+.u-box {
+  &:extend(.typo-info);
+  margin: 0.5rem 0;
+  padding: 0.5rem 1rem;
+  background-color: @color-secondary;
+  color: @color-font-secondary;
+  transition: @transition-bg;
+
+  &.ok {
+    background-color: @color-green;
+  }
+
+  &.broken {
+    background-color: @color-red;
+  }
+
+  &.pending {
+    background-color: @color-blue;
+  }
+}

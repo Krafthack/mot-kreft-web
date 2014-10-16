@@ -4,6 +4,7 @@ body {
   &:extend(.typo);
   color: @color-font-primary;
   background-color: @color-primary;
+  box-sizing: border-box;
 }
 
 button {
@@ -14,4 +15,10 @@ button {
   color: inherit;
   background-color: inherit;
   cursor: pointer;
+}
+
+section {
+  margin: 0 0.5rem;
+  padding: 0.5rem;
+  background-color: @color-primary--weaker;
 }
