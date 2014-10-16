@@ -6,6 +6,7 @@ var error = require('../common/error');
 var text = {
   info: "Velkommen til en krafthack mot kreft - webutviklings utgaven!",
   abouthack: "I dag handler det om å lage funksjonalitet i en webapplikasjon - nærmere bestemt en Mithril app. For å få til dette har vi satt opp et API, full integrasjon med APIet i modellaget til webapplikasjonen og lagd noen eksempler for dere som er helt ferske med Mithril.",
+  todo: "Oppgaver og ressurser ligger i Readme filen til dette repoet. For spørsmål, huk tak i Frode eller Ken!"
 };
 
 
@@ -17,6 +18,7 @@ module.exports = {
     return m("section.c-welcome", [
       m("p.typo-info", text.info),
       m("p", text.abouthack),
+      m("p", text.todo),
       health.view(ctrl.health)
     ]);
   }
