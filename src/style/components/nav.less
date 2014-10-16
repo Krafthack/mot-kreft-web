@@ -4,16 +4,17 @@
   left: -@nav-width;
   height: 100%;
   width: @nav-width;
-  background-color: @color-primary--stronger;
+  background-color: @color-primary;
 }
 
 .c-nav a {
   display: block;
-  color: @color-font-primary--stronger;
-  transition: @transition-bg;
+  color: @color-font-secondary;
+  transition: all 0.3s ease-out;
+  border-right: @color-secondary--weaker 0.2rem solid;
 }
 
-.c-nav hover {
-  color: red;
-  background-color: @color-primary;
+.c-nav a:hover {
+  color: @color-font-secondary--stronger;
+  border-color: @color-secondary--stronger;
 }
