@@ -1,9 +1,12 @@
 var m = require('mithril');
 var User = require('../models/User');
+var Mood = require('../models/Mood');
+var error = require('../lib/error');
 
 var text = {
-  info: "Velkommen til en krafthack mot kreft - webutviklings utgaven!"
-}
+  info: "Velkommen til en krafthack mot kreft - webutviklings utgaven!",
+  abouthack: "I dag handler det om å lage funksjonalitet i en webapplikasjon - nærmere bestemt en Mithril app. For å få til dette har vi satt opp et API, full integrasjon med APIet i modellaget til webapplikasjonen og lagd noen eksempler for dere som er helt ferske med Mithril.",
+};
 
 
 module.exports = {
@@ -12,7 +15,8 @@ module.exports = {
   },
   view: function (ctrl) {
     return m("section.c-welcome", [
-      m("", text.info),
+      m("p.typo-info", text.info),
+      m("p", text.abouthack),
       health.view(ctrl.health)
     ]);
   }
@@ -21,17 +25,8 @@ module.exports = {
 
 var health = {
   controller: function () {
-    var status = m.prop("pending");
-
-    setInterval(function () {
-      User.get().then(function (res) {
-        status(res.success ? "ok" : "pending");
-      }, function (error) {
-        status("broken");
-      });
-    }, 3000);
-
-    this.health = status;
+    this.health = m.prop("pending");
+    checkStatusInterval(this.health);
   },
   view: function (ctrl) {
     return m(".u-box", {
@@ -39,3 +34,13 @@ var health = {
     }, "Api connection is "+ ctrl.health());
   }
 };
+
+function checkStatusInterval(status) {
+  setInterval(function () {
+    User.get().then(function (res) {
+      status(res.success ? "ok" : "pending");
+    }, function (error) {
+      status("broken");
+    });
+  }, 3000);
+}
