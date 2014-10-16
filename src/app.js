@@ -1,9 +1,12 @@
 var m = require('mithril');
 var nav = require('./components/nav');
 var header = require('./components/header');
+var welcome = require('./components/welcome');
+
 var mixinLayout = require('./lib/mithril/mixin-layout');
-var canvas = require('./lib/mithril/off-canvas-nav');
+var canvasLayout = require('./lib/mithril/canvas-layout');
+
 
 m.route(document.getElementById("main-region"), "/", {
-  "/": canvas(mixinLayout(nav, header), mixinLayout()) 
+  "/": canvasLayout(mixinLayout(nav), mixinLayout(header, welcome), { onClass: "u-slideIn"})
 });
