@@ -1,6 +1,6 @@
 var m = require('mithril');
 var Mood = require('../models/Mood');
-var error = require('../lib/error');
+var error = require('../common/error');
 
 module.exports = {
   controller: function () {

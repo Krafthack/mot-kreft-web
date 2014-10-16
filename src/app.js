@@ -1,6 +1,9 @@
 var m = require('mithril');
+
+
 var nav = require('./components/nav');
 var header = require('./components/header');
+var error = require('./components/error-msg');
 var welcome = require('./components/welcome');
 var moodFlow = require('./components/mood-flow');
 
@@ -13,5 +16,5 @@ m.route(document.getElementById("main-region"), "/", {
 });
 
 function baseLayout(component) {
-  return canvasLayout(mixinLayout(nav), mixinLayout(header, component), { onClass: "u-slideIn"});
+  return canvasLayout(mixinLayout(nav), mixinLayout(header, error, component), { onClass: "u-slideIn"});
 }

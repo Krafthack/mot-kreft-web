@@ -1,7 +1,7 @@
 var m = require('mithril');
 var User = require('../models/User');
 var Mood = require('../models/Mood');
-var error = require('../lib/error');
+var error = require('../common/error');
 
 var text = {
   info: "Velkommen til en krafthack mot kreft - webutviklings utgaven!",
@@ -40,7 +40,7 @@ function checkStatusInterval(status) {
     User.get().then(function (res) {
       status(res.success ? "ok" : "pending");
     }, function (error) {
-      status("broken");
+      status("error");
     });
   }, 3000);
 }
