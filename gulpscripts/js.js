@@ -19,7 +19,7 @@ gulp.task('js', ['js-lint'], function () {
     var b = browserify(options);
     b.add(_.path.scripts);
 
-    return b.bundle()
+    b.bundle()
         .on('error', _.plumb.errorHandler)
         .pipe(source('app.bundle.js'))
 

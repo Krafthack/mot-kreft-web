@@ -13,18 +13,19 @@ var args = require('yargs').argv;
 var isProduction = !!args.production;
 
 gulp.task('less', function () {
-    return gulp.src(_.path.less)
-        .pipe(_if(!isProduction, sourcemaps.init()))
-        .pipe(plumber(_.plumb))
-        .pipe(less())
-        .pipe(prefix())
-        .pipe(_if(isProduction, csso()))
-        .pipe(rename({
-            suffix: ".bundle",
-        }))
-        .pipe(_if(!isProduction, sourcemaps.write(".")))
-        .pipe(gulp.dest(_.join(_.output, 'css/')))
-        .pipe(notify('Compiled less'));
+  gulp.src(_.path.less)
+    .pipe(_if(!isProduction, sourcemaps.init()))
+    .pipe(plumber(_.plumb))
+    .pipe(less())
+    .pipe(prefix())
+    .pipe(_if(isProduction, csso()))
+    .pipe(rename({
+        suffix: ".bundle",
+    }))
+    .pipe(_if(!isProduction, sourcemaps.write(".")))
+    .pipe(gulp.dest(_.join(_.output, 'css/')))
+    .pipe(notify('Compiled less'));
+
 });
 
 gulp.task('watch-less', ['less'], function () {
