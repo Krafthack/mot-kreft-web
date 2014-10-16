@@ -16,5 +16,5 @@ m.route(document.getElementById("main-region"), "/", {
 });
 
 function baseLayout(component) {
-  return canvasLayout(mixinLayout(nav), mixinLayout(header, error, component), { onClass: "u-slideIn"});
+  return canvasLayout(mixinLayout(header, nav), mixinLayout(error, component), { onClass: "u-slideIn"});
 }

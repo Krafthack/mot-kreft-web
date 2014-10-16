@@ -1,4 +1,5 @@
 .c-nav {
+  padding-top: @header-height;
   position: fixed;
   top: 0;
   left: -@nav-width;
@@ -10,8 +11,9 @@
 .c-nav a {
   display: block;
   color: @color-font-secondary;
-  transition: all 0.3s ease-out;
+  transition: @transition-all;
   border-right: @color-secondary--weaker 0.2rem solid;
+  padding: @space;
 }
 
 .c-nav a:hover {

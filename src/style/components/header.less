@@ -1,21 +1,45 @@
 .c-header {
   position: fixed;
+  height: @header-height;
+  width: @nav-width;
   top: 0;
   left: 0;
-  height: @header-height;
-  z-index: @z-index-10;
+  overflow: hidden;
+  z-index: @z-index--top;
 }
 
 .c-header button {
+  z-index: @z-index--top;
+  position:absolute;
   margin: 0;
   color: @color-font-secondary;
   background-color: @color-secondary;
   transition: @transition-bg;
+  height: 3rem;
+}
+
+.c-header .title {
+  &:extend(.typo-nav);
+  position: relative;
+  z-index: @z-index--belowTop;
+  background-color: @color-secondary--weaker;
+  color: @color-font-secondary;
+  border-right: @color-font-secondary 0.2rem solid;
+  transition: @transition-all;
+  height: @header-height;
+  line-height: @header-height;
+  vertical-align: middle;
+  padding-left: 3rem;
+}
+
+.c-header .no-width {
+  visibility: hidden;
+  transform: translateX(-100%);
 }
 
 .c-header .is-active {
-  background-color: @color-secondary--weaker;
+  background-color: @color-secondary--stronger;
 }
 .c-header button:hover {
-  background-color: @color-secondary--stronger;
+  background-color: @color-secondary--weaker;
 }

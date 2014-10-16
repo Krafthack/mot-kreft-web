@@ -16,7 +16,8 @@ module.exports = {
       m("button", {
         class: ctrl.active() ? "is-active" : "",
         onclick: ctrl.toggleActive
-      }, m("i.fa.fa-bars"))
+      }, m("i.fa.fa-bars")),
+      m(".title", {class: ctrl.active() ? "" : "no-width"}, "Menu")
     ]);
   }
 };
