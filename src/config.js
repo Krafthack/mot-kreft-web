@@ -1,5 +1,5 @@
 module.exports = {
-  "api": "http://krafthack-kreft-api.herokuapp.com",
+  "api": "http://api.mot-kreft.krafthack.it",
   "nav": {
     "links": [{
       "title": "Welcome",

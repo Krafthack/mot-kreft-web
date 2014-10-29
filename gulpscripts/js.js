@@ -36,7 +36,6 @@ gulp.task('js-lint', function () {
         .pipe(jshint.reporter('default'));
 });
 
-
 gulp.task('watch-js', ['js'], function () {
     gulp.watch([_.path.scriptsWatch], ['js']);
 });
