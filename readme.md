@@ -3,15 +3,16 @@ Krafthack mot kreft - Web
 
 Dette prosjektet inneholder en minimal node server som server en web-app.
 
-Web-appen er for nå konfigurert til å snakke med APIet som ligger på [api.mot-kreft.krafthack.it](http://api.mot-kreft.krafthack.it).
-
 Kom i gang
 ----
 1. Klon ned prosjektet ```https://github.com/Krafthack/mot-kreft-web.git```
-2. ```npm install```
-3. Kjør web appen med ```node server```
+2. Kjør [APIet](https://github.com/krafthack/mot-kreft-api.git) på ```localhost:4000``` eller sett env variabelen MOTKREFTAPI til ønsket endepunkt (f.eks [api.mot-kreft.krafthack.io](http://api.mot-kreft.krefthack.io)).
+3. ```npm install```
+4. Kjør web appen med ```node server```
 
 :star: Frontend blir bygd automatisk når man kjører npm install. Ønsker du å bygge frontend direkte kan ```gulp```eller ```gulp watch``` benyttes.
+
+:warning: Environment variabler blir satt som en del av gulp-bygget. Endrer du en variabel må altså gulp kjøres på nytt for å oppdatere verdiene.
 
 Struktur
 ---

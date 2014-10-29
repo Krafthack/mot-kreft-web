@@ -1,5 +1,5 @@
 module.exports = {
-  "api": "http://api.mot-kreft.krafthack.it",
+  "api": '/* @echo MOTKREFTAPI */' || "http://localhost:4000",
   "nav": {
     "links": [{
       "title": "Welcome",

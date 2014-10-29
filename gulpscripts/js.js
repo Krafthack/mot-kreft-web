@@ -7,6 +7,7 @@ var uglify = require('gulp-uglify');
 var _if = require('gulp-if');
 var notify = require('gulp-notify');
 var jshint = require('gulp-jshint');
+var preprocessify = require('preprocessify');
 
 var args = require('yargs').argv;
 var isProduction = !!args.production;
@@ -17,7 +18,8 @@ gulp.task('js', ['js-lint'], function () {
     };
 
     var b = browserify(options);
-    b.add(_.path.scripts);
+    b.add(_.path.scripts)
+      .transform(preprocessify());
 
     b.bundle()
         .on('error', _.plumb.errorHandler)
