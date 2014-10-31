@@ -4,8 +4,9 @@ var User = require('../models/User');
 var texts = {
     title: 'Registrer deg',
     labels: {
-        email: 'E-post',
-        password: 'Passord',
+        email: 'E-posten din',
+        name: 'Navnet ditt',
+        password: 'Passordet ditt',
         submit: 'Registrer deg!'
     }
 };
@@ -13,17 +14,25 @@ var texts = {
 module.exports = {
     controller: function() {
         this.email = m.prop('');
+        this.name = m.prop('');
         this.password = m.prop('');
         this.register = register.bind(this);
     },
     view: function(ctrl) {
         return m('section', [
+            m('h2', {}, texts.title),
             inputField({
                     name: 'email',
                     type: 'email',
                     placeholder: texts.labels.email
                 },
                 ctrl.email
+            ),
+            inputField({
+                    name: 'name',
+                    placeholder: texts.labels.name
+                },
+                ctrl.name
             ),
             inputField({
                     name: 'password',
@@ -52,13 +61,13 @@ function button(options) {
 }
 
 function register() {
-    var user = new User({ email: this.email(), password: this.password() });
+    var user = new User({ name: this.name(), email: this.email(), password: this.password() });
     user.save().then(function(data) {
         // TODO: Set user as logged in
         // TODO: Redirect user to frontpage
         console.log('success!', data);
     }, function(err) {
-        // TODO: Update error view
+        // TODO: Update error view with error warning
         console.log('error!', err);
     });
 }
