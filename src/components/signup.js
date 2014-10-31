@@ -7,6 +7,10 @@ var texts = {
         email: 'E-posten din',
         name: 'Navnet ditt',
         password: 'Passordet ditt',
+        userType: {
+            patient: 'jeg er syk',
+            supporter: 'jeg kjenner noen som er syk'
+        },
         submit: 'Registrer deg!'
     },
     errors: {
@@ -14,7 +18,8 @@ var texts = {
         validation: {
             email: 'Fiks eposten din',
             name: 'Vi vil gjerne vite fornavnet ditt i alle fall!',
-            password: 'Vi trenger et passord helst!'
+            password: 'Vi trenger et passord helst!',
+            userType: 'Vi må få lov å vite om du er syk eller ikke'
         }
     }
 };
@@ -24,6 +29,7 @@ module.exports = {
         this.email = m.prop('');
         this.name = m.prop('');
         this.password = m.prop('');
+        this.userType = m.prop('');
         this.register = register.bind(this);
         this.validation = m.prop('');
     },
@@ -50,8 +56,26 @@ module.exports = {
                 },
                 ctrl.password
             ),
+            m('div',
+                {
+                    class: 'userType',
+                    style: 'clear: both; overflow: auto;'
+                },
+                [
+                    radioButton({
+                        name: 'userType',
+                        value: 'patient',
+                        label: texts.labels.userType.patient
+                    }, ctrl.userType),
+                    radioButton({
+                        name: 'userType',
+                        value: 'supporter',
+                        label: texts.labels.userType.supporter
+                    }, ctrl.userType)
+                ]
+            ),
             button({type: 'submit', value: texts.labels.submit, onclick: ctrl.register.bind(ctrl) }),
-            m('', {
+            m('div', {
                     class: 'validation-error' + ctrl.validation().length ? ' visible' : ' hidden'
                 },
                 ctrl.validation()
@@ -61,10 +85,19 @@ module.exports = {
 };
 
 function inputField(options, val) {
-    options.oninput = m.withAttr('value', val)
+    options.oninput = m.withAttr('value', val);
     options.value = val();
     return m('', [
         m('input', options)
+    ]);
+}
+
+function radioButton(options, val) {
+    options.type = 'radio';
+    options.onchange = val();
+    return m('', {style: 'float: left;'}, [
+        m('input', options),
+        m('label', {for: options.id}, options.label)
     ]);
 }
 

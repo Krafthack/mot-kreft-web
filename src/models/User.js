@@ -6,6 +6,7 @@ var User = function (data) {
   this.name = m.prop(data.name);
   this.email = m.prop(data.email);
   this.password = m.prop(data.password);
+  this.userType = m.prop(data.userType);
 };
 
 User.get = function() {
@@ -26,6 +27,10 @@ User.prototype.validate = function() {
     if(!this.password() && !this.password().length) {
         errors.push({key: 'password'});
     }
+    if(!this.userType() && !this.userType().length) {
+        errors.push({key: 'userType'});
+    }
+
     return errors.length > 0 ? errors : undefined;
 };
 
