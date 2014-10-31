@@ -13,4 +13,12 @@ User.get = function () {
   });
 };
 
+User.prototype.save = function() {
+    return m.request({
+        method: 'POST',
+        url: config.api + '/users',
+        data: this
+    });
+};
+
 module.exports = User;
