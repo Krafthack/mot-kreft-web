@@ -32,7 +32,7 @@ module.exports = {
                 },
                 ctrl.password
             ),
-            button({type: 'submit', value: texts.labels.submit, onclick: ctrl.register })
+            button({type: 'submit', value: texts.labels.submit, onclick: ctrl.register.bind(ctrl) })
         ]);
     }
 };
@@ -52,10 +52,13 @@ function button(options) {
 }
 
 function register() {
-    var user = new User({ email: email(), password: password() });
+    var user = new User({ email: this.email(), password: this.password() });
     user.save().then(function(data) {
-        alert('success!', data);
+        // TODO: Set user as logged in
+        // TODO: Redirect user to frontpage
+        console.log('success!', data);
     }, function(err) {
-        alert('error!', err);
+        // TODO: Update error view
+        console.log('error!', err);
     });
 }
