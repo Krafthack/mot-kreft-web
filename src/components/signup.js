@@ -8,6 +8,14 @@ var texts = {
         name: 'Navnet ditt',
         password: 'Passordet ditt',
         submit: 'Registrer deg!'
+    },
+    errors: {
+        registrationFailed: 'Vi klarte ikke å registrere deg nå. Prøv igjen senere',
+        validation: {
+            email: 'Fiks eposten din',
+            name: 'Vi vil gjerne vite fornavnet ditt i alle fall!',
+            password: 'Vi trenger et passord helst!'
+        }
     }
 };
 
@@ -22,17 +30,17 @@ module.exports = {
         return m('section', [
             m('h2', {}, texts.title),
             inputField({
+                    name: 'name',
+                    placeholder: texts.labels.name
+                },
+                ctrl.name
+            ),
+            inputField({
                     name: 'email',
                     type: 'email',
                     placeholder: texts.labels.email
                 },
                 ctrl.email
-            ),
-            inputField({
-                    name: 'name',
-                    placeholder: texts.labels.name
-                },
-                ctrl.name
             ),
             inputField({
                     name: 'password',
@@ -62,10 +70,16 @@ function button(options) {
 
 function register() {
     var user = new User({ name: this.name(), email: this.email(), password: this.password() });
+    var validationErrors = user.validate();
+    if(validationErrors) {
+        console.log('validation error - exiting');
+        return;
+    }
+    
     user.save().then(function(data) {
         // TODO: Set user as logged in
         // TODO: Redirect user to frontpage
-        console.log('registered successfully! Data received: ', data);
+        m.route('/');
     }, function(err) {
         // TODO: Update error view with error warning
         console.log('error while saving!', err);
