@@ -6,7 +6,7 @@ Dette prosjektet inneholder en minimal node server som server en web-app.
 Kom i gang
 ----
 1. Klon ned prosjektet ```https://github.com/Krafthack/mot-kreft-web.git```
-2. Kjør [APIet](https://github.com/krafthack/mot-kreft-api.git) på ```localhost:4000``` eller sett env variabelen MOTKREFTAPI til ønsket endepunkt (f.eks [api.mot-kreft.krafthack.io](http://api.mot-kreft.krefthack.io)).
+2. Kjør [APIet](https://github.com/krafthack/mot-kreft-api.git) på ```localhost:4000``` eller sett env variabelen MOTKREFTAPI til ønsket endepunkt (f.eks [api.mot-kreft.krafthack.it](http://api.mot-kreft.krefthack.it)).
 3. ```npm install```
 4. Kjør web appen med ```node server```
 
