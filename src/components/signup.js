@@ -25,6 +25,7 @@ module.exports = {
         this.name = m.prop('');
         this.password = m.prop('');
         this.register = register.bind(this);
+        this.validation = m.prop('');
     },
     view: function(ctrl) {
         return m('section', [
@@ -49,7 +50,12 @@ module.exports = {
                 },
                 ctrl.password
             ),
-            button({type: 'submit', value: texts.labels.submit, onclick: ctrl.register.bind(ctrl) })
+            button({type: 'submit', value: texts.labels.submit, onclick: ctrl.register.bind(ctrl) }),
+            m('', {
+                    class: 'validation-error' + ctrl.validation().length ? ' visible' : ' hidden'
+                },
+                ctrl.validation()
+            )
         ]);
     }
 };
@@ -72,16 +78,19 @@ function register() {
     var user = new User({ name: this.name(), email: this.email(), password: this.password() });
     var validationErrors = user.validate();
     if(validationErrors) {
-        console.log('validation error - exiting');
+        var validationTexts = '<h3>Ops!</h3>';
+        for(var i = 0; i < validationErrors.length; i++) {
+            validationTexts += texts.errors.validation[validationErrors[i].key] +'<br/>'
+        }
+
+        this.validation(m.trust(validationTexts));
         return;
     }
-    
+
+    var that = this;
     user.save().then(function(data) {
-        // TODO: Set user as logged in
-        // TODO: Redirect user to frontpage
         m.route('/');
     }, function(err) {
-        // TODO: Update error view with error warning
-        console.log('error while saving!', err);
+        that.validation(m.trust(texts.errors.registrationFailed));
     });
 }

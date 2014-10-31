@@ -18,13 +18,13 @@ User.get = function() {
 User.prototype.validate = function() {
     var errors = [];
     if(!this.name() && !this.name().trim().length) {
-        errors.push({field: this.name});
+        errors.push({key: 'name'});
     }
     if(!this.email() && !this.email().trim().length) {
-        errors.push({field: this.email});
+        errors.push({key: 'email'});
     }
     if(!this.password() && !this.password().length) {
-        errors.push({field: this.password});
+        errors.push({key: 'password'});
     }
     return errors.length > 0 ? errors : undefined;
 };
