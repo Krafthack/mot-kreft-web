@@ -65,9 +65,9 @@ function register() {
     user.save().then(function(data) {
         // TODO: Set user as logged in
         // TODO: Redirect user to frontpage
-        console.log('success!', data);
+        console.log('registered successfully! Data received: ', data);
     }, function(err) {
         // TODO: Update error view with error warning
-        console.log('error!', err);
+        console.log('error while saving!', err);
     });
 }
