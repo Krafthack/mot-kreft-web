@@ -42,7 +42,7 @@ function checkStatusInterval(status) {
     User.get().then(function (res) {
       status(res.success ? "ok" : "pending");
     }, function (error) {
-      status("error");
+      status("such error");
     });
   }, 3000);
 }

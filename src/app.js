@@ -6,13 +6,15 @@ var header = require('./components/header');
 var error = require('./components/error-msg');
 var welcome = require('./components/welcome');
 var moodFlow = require('./components/mood-flow');
+var signup = require('./components/signup');
 
 var mixinLayout = require('./lib/mithril/mixin-layout');
 var canvasLayout = require('./lib/mithril/canvas-layout');
 
 m.route(document.getElementById("main-region"), "/", {
   "/": baseLayout(welcome),
-  "/flow": baseLayout(moodFlow)
+  "/flow": baseLayout(moodFlow),
+  "/signup": baseLayout(signup)
 });
 
 function baseLayout(component) {
